@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\registrationCRUD\bin\Debug\registrationCRUD.exe.config
+C:\Users\HP\source\repos\registrationCRUD\bin\Debug\registrationCRUD.exe
+C:\Users\HP\source\repos\registrationCRUD\bin\Debug\registrationCRUD.pdb
+C:\Users\HP\source\repos\registrationCRUD\obj\Debug\registrationCRUD.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\registrationCRUD\obj\Debug\registrationCRUD.csproj.SuggestedBindingRedirects.cache
+C:\Users\HP\source\repos\registrationCRUD\obj\Debug\registrationCRUD.Form1.resources
+C:\Users\HP\source\repos\registrationCRUD\obj\Debug\registrationCRUD.Properties.Resources.resources
+C:\Users\HP\source\repos\registrationCRUD\obj\Debug\registrationCRUD.csproj.GenerateResource.cache
+C:\Users\HP\source\repos\registrationCRUD\obj\Debug\registrationCRUD.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\registrationCRUD\obj\Debug\registrationCRUD.exe
+C:\Users\HP\source\repos\registrationCRUD\obj\Debug\registrationCRUD.pdb

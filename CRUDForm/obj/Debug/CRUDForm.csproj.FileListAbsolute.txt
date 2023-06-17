@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\CRUDForm\bin\Debug\CRUDForm.exe.config
+C:\Users\HP\source\repos\CRUDForm\bin\Debug\CRUDForm.exe
+C:\Users\HP\source\repos\CRUDForm\bin\Debug\CRUDForm.pdb
+C:\Users\HP\source\repos\CRUDForm\obj\Debug\CRUDForm.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\CRUDForm\obj\Debug\CRUDForm.csproj.SuggestedBindingRedirects.cache
+C:\Users\HP\source\repos\CRUDForm\obj\Debug\CRUDForm.Form1.resources
+C:\Users\HP\source\repos\CRUDForm\obj\Debug\CRUDForm.Properties.Resources.resources
+C:\Users\HP\source\repos\CRUDForm\obj\Debug\CRUDForm.csproj.GenerateResource.cache
+C:\Users\HP\source\repos\CRUDForm\obj\Debug\CRUDForm.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\CRUDForm\obj\Debug\CRUDForm.exe
+C:\Users\HP\source\repos\CRUDForm\obj\Debug\CRUDForm.pdb
