@@ -1,28 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace registrationCRUD
 {
     public partial class Form1 : Form
     {
+        private SqlConnection con = new SqlConnection("Data Source=LAPTOP-P7FT8L5E\\SQLEXPRESS;Initial Catalog=registrationCRUD;Integrated Security=True");
+        private ErrorProvider errorProvider;
         public Form1()
         {
             InitializeComponent();
+            errorProvider = new ErrorProvider();
+
+            txtFirstname.TextChanged += txtFirstname_TextChanged;
+            txtLastname.TextChanged += txtLastname_TextChanged;
+            txtAge.TextChanged += txtAge_TextChanged;
+            txtState.TextChanged += txtState_TextChanged;
+            txtCity.TextChanged += txtCity_TextChanged;
+            txtPhonenumber.TextChanged += txtPhonenumber_TextChanged;
+            txtPassword.TextChanged += txtPassword_TextChanged;
+            txtConfirmpassword.TextChanged += txtConfirmpassword_TextChanged;
+            txtEmail.TextChanged += txtEmail_TextChanged;
         }
 
-        SqlConnection con = new SqlConnection("Data Source=LAPTOP-P7FT8L5E\\SQLEXPRESS;Initial Catalog=registrationCRUD;Integrated Security=True");
         public int id;
         private void Form1_Load(object sender, EventArgs e)
         {
             GetUserRecord();
+            
+
         }
 
         private void GetUserRecord()
@@ -78,20 +88,159 @@ namespace registrationCRUD
                 
                 GetUserRecord();
                 ResetFormControls();
+                errorProvider.Clear();
 
 
             }
 
         }
+        
+
 
         private bool IsValid()
         {
-            if(txtFirstname.Text == string.Empty)
+           
+
+            if (string.IsNullOrWhiteSpace(txtFirstname.Text))
             {
-                MessageBox.Show("First name is required","Failed",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider.SetError(txtFirstname, "First name is required");
+
                 return false;
             }
+            else if (txtFirstname.Text.Any(char.IsDigit))
+            {
+
+                errorProvider.SetError(txtFirstname, "Digits are not allowed");
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtLastname.Text))
+
+            {
+                errorProvider.SetError(txtLastname, "Last name is required");
+                return false;
+
+            }
+            else if (txtLastname.Text.Any(char.IsDigit))
+            {
+                errorProvider.SetError(txtLastname, "Digits are not allowed");
+                return false;
+            }
+            else if (dateTimePicker1.Value == DateTime.MaxValue)
+            {
+                errorProvider.SetError(dateTimePicker1, "Date of birth is required");
+                return false;
+
+            }
+            else if (txtAge.Text == string.Empty)
+            {
+                errorProvider.SetError(txtAge, "Age is required");
+                return false;
+
+            }
+            else if (txtState.Text == string.Empty)
+            {
+                errorProvider.SetError(txtState, "State is required");
+                return false;
+
+            }
+            else if (txtCity.Text == string.Empty)
+            {
+                errorProvider.SetError(txtCity, "City is required");
+                return false;
+            }
+            else if (txtPhonenumber.Text == string.Empty)
+            {
+                errorProvider.SetError(txtPhonenumber, "Phone number is required");
+                return false;
+
+            }
+            else if (!Regex.IsMatch(txtPhonenumber.Text, @"^\d{10}$"))
+            {
+                errorProvider.SetError(txtPhonenumber, "Please provide a valid 10-digit phone number");
+                return false;
+            }
+            else if (txtEmail.Text == string.Empty)
+            {
+                errorProvider.SetError(txtEmail, "Email is required");
+                return false;
+
+            }
+            else if (!Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                errorProvider.SetError(txtEmail, "Please provide a valid email address");
+                return false;
+            }
+
+            else if (txtPassword.Text == string.Empty)
+            {
+                errorProvider.SetError(txtPassword, "Password is required");
+                return false;
+
+            }
+            else if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"))
+            {
+                errorProvider.SetError(txtPassword, "\"Please enter a valid password. It should contain at least one uppercase letter, one lowercase letter, one digit, and be at least 8 characters long\"");
+                return false;
+            }
+            else if (txtConfirmpassword.Text == string.Empty)
+            {
+                errorProvider.SetError(txtConfirmpassword, "Please confirm your password");
+                return false;
+
+            }
+            else if (txtPassword.Text != txtConfirmpassword.Text)
+            {
+                errorProvider.SetError(txtConfirmpassword, "The password and confirm password entries do not match.");
+
+                return false;
+            }
+
             return true;
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtConfirmpassword_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtPhonenumber_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtCity_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtState_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtAge_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtLastname_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtFirstname_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -232,6 +381,20 @@ namespace registrationCRUD
             {
                 MessageBox.Show("Please select a user to delete", "select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
+        {
+            DateTime selectedDate = dateTimePicker1.Value;
+            DateTime currentDate = DateTime.Now;
+            int age = currentDate.Year - selectedDate.Year;
+
+            if (currentDate.Month < selectedDate.Month || (currentDate.Month == selectedDate.Month && currentDate.Day < selectedDate.Day))
+            {
+                age--;
+            }
+
+            txtAge.Text = age.ToString();
         }
     }
 }

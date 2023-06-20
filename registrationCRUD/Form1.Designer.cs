@@ -186,6 +186,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(897, 241);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(260, 28);
             this.txtPassword.TabIndex = 14;
             // 
@@ -194,6 +195,7 @@
             this.txtConfirmpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmpassword.Location = new System.Drawing.Point(897, 294);
             this.txtConfirmpassword.Name = "txtConfirmpassword";
+            this.txtConfirmpassword.PasswordChar = '*';
             this.txtConfirmpassword.Size = new System.Drawing.Size(260, 28);
             this.txtConfirmpassword.TabIndex = 15;
             // 
@@ -293,12 +295,13 @@
             this.dateTimePicker1.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(335, 205);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2023, 6, 17, 0, 0, 0, 0);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2010, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(259, 27);
             this.dateTimePicker1.TabIndex = 25;
-            this.dateTimePicker1.Value = new System.DateTime(2023, 6, 17, 0, 0, 0, 0);
+            this.dateTimePicker1.Value = new System.DateTime(2010, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged_1);
             // 
             // button1
             // 
