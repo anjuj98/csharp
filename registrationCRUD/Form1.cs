@@ -85,10 +85,10 @@ namespace registrationCRUD
                 con.Close();
 
                 MessageBox.Show("Registration Successfull","Saved",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                
+                errorProvider.Clear();
+
                 GetUserRecord();
                 ResetFormControls();
-                errorProvider.Clear();
 
 
             }
@@ -196,6 +196,7 @@ namespace registrationCRUD
             }
 
             return true;
+
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
